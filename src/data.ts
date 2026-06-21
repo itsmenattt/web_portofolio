@@ -53,7 +53,7 @@ export const projectsData: Project[] = [
     description: "Prototipe aplikasi mobile healthcare untuk mendeteksi potensi lesi kanker kulit menggunakan Convolutional Neural Network (CNN).",
     longDescription: "Dikembangkan sebagai proyek kolaboratif mata kuliah Kecerdasan Artifisial. Model Machine Learning dilatih menggunakan dataset ISIC dengan arsitektur MobileNetV2 dan ditransformasikan menjadi format TensorFlow Lite, kemudian dideploy ke aplikasi mobile untuk inspeksi visual instan.",
     role: "Machine Learning Engineer",
-    techStack: ["TensorFlow", "React Native", "Flask API", "Python", "Google Cloud Storage"],
+    techStack: ["TensorFlow", "React Native", "Flask API", "Python", "Cloud Storage"],
     features: [
       "Pengambilan gambar langsung via kamera smartphone atau unggah galeri",
       "Klasifikasi 3 jenis lesi kanker kulit dengan tingkat keyakinan tinggi",
@@ -71,7 +71,7 @@ export const projectsData: Project[] = [
     description: "Aplikasi mobile e-commerce khusus persewaan alat perkemahan dan petualangan dengan sistem check-in terintegrasi peta.",
     longDescription: "Aplikasi yang dirancang guna mempermudah pecinta alam untuk menemukan gerai rental terdekat, membandingkan harga paket mendaki, serta melakukan pembayaran aman. Dilengkapi visualisasi ketersediaan alat lewat diagram interaktif.",
     role: "UI/UX & Lead Flutter Developer",
-    techStack: ["Flutter", "Dart", "Firebase Firestore", "Google Maps SDK", "Midtrans Core API"],
+    techStack: ["Flutter", "Dart", "Firebase Firestore", "Maps SDK", "Midtrans Core API"],
     features: [
       "Integrasi visual peta lokasi gerai outdoor terdekat di sekitar pengguna",
       "Pencarian real-time dengan filter kategori produk dan tanggal ketersediaan",
@@ -106,19 +106,17 @@ export const organizationData: Organization[] = [
   {
     id: "org-1",
     organizationName: "Himpunan Mahasiswa Informatika (HMIF)",
-    role: "Kepala Divisi Hubungan Masyarakat & Media",
+    role: "Staff Divisi Kerohanian",
     period: "Sep 2024 - Sekarang",
-    description: "Memimpin divisi strategis beranggotakan 12 orang dengan fokus penuh pada publikasi ilmiah, pengelolaan branding kanal sosial media resmi, serta relasi eksternal antar himpunan kampus lain.",
+    description: "Divisi yang fokus pada pengembangan spiritualitas dan kegiatan keagamaan seluruh mahasiswa Informatika.",
     achievements: [
-      "Meningkatkan engagement sosial media Instagram & LinkedIn resmi HMIF sebesar 120% melalui strategi konten reels edukasi informatika.",
-      "Bertindak sebagai Ketua Pelaksana Talkshow 'TechCareer 2024' yang sukses mendatangkan pembicara Senior Engineer dari Unicorn Tech Indonesia dengan dihadiri 300+ peserta virtual.",
-      "Menginisiasi digitalisasi pendaftaran kepengurusan HMIF berbasis web dari Google Form ke internal hosting mandiri."
+      "Mengadakan dan memfasilitasi kegiatan keagamaan rutin bagi mahasiswa informatika.",
     ],
     isActive: true
   },
   {
     id: "org-2",
-    organizationName: "Google Developer Student Clubs (GDSC)",
+    organizationName: "Developer Student Clubs (GDSC)",
     role: "Core Team Developer - Mobile & Web Department",
     period: "Okt 2023 - Agu 2024",
     description: "Mengadakan dan berkontribusi langsung pada kegiatan lokakarya pengenalan pemrograman di seluruh lingkup universitas, serta membangun aplikasi/situs web kepanitiaan.",
@@ -148,15 +146,15 @@ export const skillsData: Skill[] = [
   { name: "React.js / Next.js", category: "Frontend", percentage: 90, iconName: "React" },
   { name: "Tailwind CSS", category: "Frontend", percentage: 95, iconName: "Css" },
   { name: "TypeScript", category: "Frontend", percentage: 85, iconName: "Code" },
-  
+
   { name: "Node.js / Express.js", category: "Backend", percentage: 88, iconName: "Server" },
   { name: "Go / Golang", category: "Backend", percentage: 75, iconName: "Cpu" },
   { name: "PostgreSQL / Prisma", category: "Backend", percentage: 85, iconName: "Database" },
-  
+
   { name: "Flutter & Dart", category: "Mobile & DevOps", percentage: 80, iconName: "Smartphone" },
   { name: "Git & GitHub", category: "Mobile & DevOps", percentage: 90, iconName: "Workflow" },
   { name: "Docker Container", category: "Mobile & DevOps", percentage: 70, iconName: "Layers" },
-  
+
   { name: "Python / TensorFlow", category: "Data Science", percentage: 78, iconName: "Binary" },
   { name: "Data Preprocessing", category: "Data Science", percentage: 82, iconName: "LineChart" },
   { name: "SQL Query Optimization", category: "Data Science", percentage: 86, iconName: "Table" }
