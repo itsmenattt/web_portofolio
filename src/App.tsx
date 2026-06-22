@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Terminal, BookOpen, User, Briefcase, Code, Database, Smartphone, 
-  Layers, Github, Linkedin, Mail, MapPin, ExternalLink, Calendar, 
-  Award, Trophy, Phone, Send, CheckCircle, ChevronRight, X, 
+import {
+  Terminal, BookOpen, User, Briefcase, Code, Database, Smartphone,
+  Layers, Github, Linkedin, Mail, MapPin, ExternalLink, Calendar,
+  Award, Trophy, Phone, Send, CheckCircle, ChevronRight, X,
   ArrowUpRight, Search, FileText, Filter, GraduationCap, Copy, Check, Sparkles, Cpu
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -14,11 +14,10 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<'home' | 'projects' | 'organizations' | 'academic' | 'contact'>('home');
   const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  
+
   // Interactive Custom Toast State
   const [copySuccess, setCopySuccess] = useState<boolean>(false);
-  const [emailCopied, setEmailCopied] = useState<boolean>(false);
-  
+
   // Contact Form State
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
@@ -26,23 +25,18 @@ export default function App() {
 
   // Filter Projects by state
   const categories = ['Semua', 'Web Dev', 'Mobile Dev', 'Data Science', 'UI/UX & SysDev'];
-  
-  const filteredProjects = selectedCategory === 'Semua' 
-    ? projectsData 
+
+  const filteredProjects = selectedCategory === 'Semua'
+    ? projectsData
     : projectsData.filter(p => p.category === selectedCategory);
 
-  // Action: Copy Email to Clipboard
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(personalData.email);
-    setEmailCopied(true);
-    setTimeout(() => setEmailCopied(false), 2000);
-  };
+
 
   // Action: Mimic form submit
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-    
+
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -79,7 +73,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-slate-950 bg-grid-pattern font-sans relative selection:bg-purple-100 selection:text-purple-900 border-t-8 border-purple-600">
-      
+
       {/* GEOMETRIC NAVIGATION BAR */}
       <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
@@ -109,11 +103,10 @@ export default function App() {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className={`relative py-2 transition-all duration-200 ${
-                    activeSection === item.id 
-                      ? 'text-purple-600 underline underline-offset-8 decoration-2 decoration-purple-600' 
-                      : 'text-slate-500 hover:text-purple-600'
-                  }`}
+                  className={`relative py-2 transition-all duration-200 ${activeSection === item.id
+                    ? 'text-purple-600 underline underline-offset-8 decoration-2 decoration-purple-600'
+                    : 'text-slate-500 hover:text-purple-600'
+                    }`}
                 >
                   {item.label}
                 </a>
@@ -122,22 +115,13 @@ export default function App() {
 
             {/* Action - Clean solid outline button */}
             <div className="flex items-center space-x-2">
-              <button 
-                onClick={handleCopyEmail}
+              <a
+                href={`mailto:${personalData.email}`}
                 className="relative inline-flex items-center space-x-2 px-4 py-2 border border-slate-950 bg-slate-950 text-white hover:bg-purple-600 hover:border-purple-600 rounded-none text-xs font-bold uppercase tracking-widest transition-all duration-200 active:scale-95"
               >
-                {emailCopied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5" />
-                    <span>Tersalin!</span>
-                  </>
-                ) : (
-                  <>
-                    <Mail className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">Salin Email</span>
-                  </>
-                )}
-              </button>
+                <Mail className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Email</span>
+              </a>
             </div>
           </div>
         </div>
@@ -150,15 +134,15 @@ export default function App() {
           <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
               <pattern id="grid-pattern-svg" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#7c3aed" strokeWidth="0.5"/>
+                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#7c3aed" strokeWidth="0.5" />
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#grid-pattern-svg)"/>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-svg)" />
           </svg>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-          
+
           {/* Main Hero Metadata */}
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center space-x-2 bg-slate-100 border border-slate-200 px-3 py-1 text-slate-700 text-[10px] font-mono font-bold uppercase tracking-widest">
@@ -167,10 +151,10 @@ export default function App() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-slate-950 leading-none tracking-tight uppercase">
-              Informatics Engineering<br/>
+              Informatics Engineering<br />
               <span className="text-purple-600 italic font-serif normal-case font-bold">{personalData.name}</span>
             </h1>
-            
+
             <p className="text-xs uppercase tracking-[0.25em] font-bold text-slate-400">
               {personalData.title} & Developer Sistem
             </p>
@@ -209,15 +193,15 @@ export default function App() {
 
             {/* Call to Actions - Sharp edges */}
             <div className="flex flex-wrap gap-4 pt-2">
-              <a 
-                href="#projects" 
+              <a
+                href="#projects"
                 className="px-6 py-3 bg-slate-950 text-white hover:bg-purple-600 rounded-none font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center space-x-2"
               >
                 <span>Lihat Proyek Kuliah</span>
                 <ChevronRight className="w-4 h-4" />
               </a>
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="px-6 py-3 bg-white border border-slate-300 text-slate-700 rounded-none font-bold text-xs uppercase tracking-widest hover:border-purple-600 hover:text-purple-700 transition-all duration-300"
               >
                 Hubungi Saya
@@ -229,7 +213,7 @@ export default function App() {
           <div className="lg:col-span-5 relative mt-6 lg:mt-0">
             {/* Box-outline accent typical of Geometric Balance layout */}
             <div className="absolute inset-0 border border-purple-300 translate-x-3 translate-y-3 pointer-events-none"></div>
-            
+
             <div className="relative bg-slate-950 rounded-none shadow-xl overflow-hidden border border-slate-800">
               {/* Window Header */}
               <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
@@ -241,7 +225,7 @@ export default function App() {
                 <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">nadia-workspace.py</div>
                 <div className="w-12"></div>
               </div>
-              
+
               {/* Code Panel */}
               <div className="p-6 font-mono text-xs sm:text-xs text-slate-300 overflow-x-auto leading-relaxed">
                 <div>
@@ -267,7 +251,7 @@ export default function App() {
                 </div>
                 <div className="pl-8">]</div>
                 <div className="pl-8 text-slate-400">self.keahlian = <span className="text-purple-300">["React", "Express", "Database", "Go"]</span></div>
-                
+
                 <div className="mt-6 border-t border-slate-800 pt-4 text-slate-500">
                   <span className="text-purple-400"># Konsol Output:</span>
                   <div className="text-emerald-400 mt-1 flex items-center space-x-1.5">
@@ -277,7 +261,7 @@ export default function App() {
                 </div>
               </div>
             </div>
-            
+
             {/* Absolute badge detail */}
             <div className="absolute -bottom-4 -left-3 bg-white border border-slate-950 px-3.5 py-2 rounded-none shadow-md flex items-center space-x-3">
               <span className="h-2 w-2 rounded-none bg-emerald-500 animate-pulse"></span>
@@ -295,7 +279,7 @@ export default function App() {
       {/* DETAILED COLLEGE PROJECTS SECTION - GEOMETRICALLY RESTRUCTURED */}
       <section id="projects" className="py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          
+
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-200">
             <div className="max-w-2xl space-y-2">
               <div className="flex items-center gap-2">
@@ -316,11 +300,10 @@ export default function App() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1.5 border font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
-                    selectedCategory === cat
-                      ? 'bg-slate-950 text-white border-slate-950'
-                      : 'bg-white text-slate-600 border-slate-200 hover:border-purple-600 hover:text-purple-700'
-                  }`}
+                  className={`px-3 py-1.5 border font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 ${selectedCategory === cat
+                    ? 'bg-slate-950 text-white border-slate-950'
+                    : 'bg-white text-slate-600 border-slate-200 hover:border-purple-600 hover:text-purple-700'
+                    }`}
                 >
                   {cat}
                 </button>
@@ -388,7 +371,7 @@ export default function App() {
                     <span className="text-xs text-slate-500 font-medium">
                       Peran: <strong className="text-slate-800 font-bold uppercase">{project.role}</strong>
                     </span>
-                    
+
                     <button
                       onClick={() => setSelectedProject(project)}
                       className="px-4 py-2 border border-slate-950 text-slate-950 hover:bg-slate-950 hover:text-white text-xs font-bold uppercase tracking-wider transition-all duration-200"
@@ -407,7 +390,7 @@ export default function App() {
       {/* EXPERIENCES & ORGANIZATIONS SECTION - LINEAR TIMELINE LAYOUT */}
       <section id="organizations" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          
+
           <div className="max-w-3xl space-y-2 mb-16 pb-6 border-b border-slate-200">
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-mono text-purple-600 uppercase tracking-widest font-bold">ORG. EXPERIENCE</span>
@@ -424,7 +407,7 @@ export default function App() {
           {/* Symmetrical layouts alignment */}
           <div className="space-y-12 max-w-5xl">
             {organizationData.map((org) => (
-              <div 
+              <div
                 key={org.id}
                 className="flex flex-col md:flex-row gap-6 md:gap-12 pb-10 border-b border-slate-200 last:border-b-0 group"
               >
@@ -481,7 +464,7 @@ export default function App() {
       {/* ACADEMICS & TECHNICAL SKILLS SECTION */}
       <section id="academic" className="py-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          
+
           <div className="max-w-3xl space-y-2 mb-16 pb-6 border-b border-slate-200">
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-mono text-purple-600 uppercase tracking-widest font-bold">ACAD. METRICS</span>
@@ -496,7 +479,7 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            
+
             {/* Academic Courses Column (Col 5) */}
             <div className="lg:col-span-5 space-y-6">
               <div className="bg-white p-6 border border-slate-200">
@@ -504,12 +487,12 @@ export default function App() {
                   <GraduationCap className="w-5 h-5 text-purple-600" />
                   <h3 className="font-extrabold text-sm uppercase tracking-wider text-slate-900">Mata Kuliah Utama & Nilai</h3>
                 </div>
-                
+
                 <p className="text-[11px] text-slate-400 font-medium mb-4">Nilai transkrip kelulusan terbaik dari SIAKAD resmi:</p>
-                
+
                 <div className="space-y-2.5">
                   {coursesData.map((course) => (
-                    <div 
+                    <div
                       key={course.code}
                       className="p-3 bg-slate-50 border border-slate-200 flex items-center justify-between text-xs hover:border-purple-600 transition-colors"
                     >
@@ -565,7 +548,7 @@ export default function App() {
                         <h4 className="text-[9px] font-mono font-bold text-purple-600 uppercase tracking-widest block border-b border-slate-100 pb-1">
                           {categoryName}
                         </h4>
-                        
+
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           {categorySkills.map((skill) => (
                             <div key={skill.name} className="bg-slate-50 p-3.5 border border-slate-200 relative overflow-hidden transition-all hover:border-purple-300">
@@ -573,10 +556,10 @@ export default function App() {
                                 <span className="font-bold text-xs uppercase text-slate-800">{skill.name}</span>
                                 <span className="text-[10px] font-mono font-bold text-purple-600">{skill.percentage}%</span>
                               </div>
-                              
+
                               {/* Tailored Skill Bar */}
                               <div className="w-full h-1 bg-slate-200">
-                                <div 
+                                <div
                                   className="h-full bg-purple-600 transition-all duration-1000"
                                   style={{ width: `${skill.percentage}%` }}
                                 ></div>
@@ -599,15 +582,15 @@ export default function App() {
 
       {/* FOOTER & CONNECTED PROFESSIONAL CONTACT */}
       <section id="contact" className="py-20 bg-slate-950 text-white relative overflow-hidden border-t-4 border-purple-600">
-        
+
         {/* Abstract pattern design */}
         <div className="absolute top-0 left-12 w-64 h-64 bg-slate-900/40 rounded-full filter blur-3xl opacity-50"></div>
         <div className="absolute bottom-0 right-12 w-80 h-80 bg-purple-950/20 rounded-full filter blur-3xl opacity-50"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            
+
             {/* Left Connect info (Col 5) */}
             <div className="lg:col-span-5 space-y-6">
               <span className="px-3 py-1 bg-slate-900 border border-slate-800 text-purple-450 text-[9px] font-mono font-bold uppercase tracking-widest">
@@ -622,20 +605,20 @@ export default function App() {
 
               {/* Direct channels List */}
               <div className="space-y-4 pt-4">
-                
+
                 <div className="flex items-center space-x-3.5">
                   <div className="w-10 h-10 bg-slate-900 border border-slate-800 text-purple-400 flex items-center justify-center">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-[9px] font-mono text-slate-500 block uppercase tracking-wider">Kirim Email</span>
-                    <button 
-                      onClick={handleCopyEmail}
+                    <a
+                      href={`mailto:${personalData.email}`}
                       className="text-sm font-bold hover:text-purple-400 transition-colors flex items-center gap-1.5"
                     >
                       <span>{personalData.email}</span>
-                      <Copy className="w-3.5 h-3.5 text-slate-500 hover:text-purple-400 cursor-pointer" />
-                    </button>
+                      <ExternalLink className="w-3.5 h-3.5 text-slate-500 hover:text-purple-400 cursor-pointer" />
+                    </a>
                   </div>
                 </div>
 
@@ -680,10 +663,10 @@ export default function App() {
 
             {/* Right message board (Col 7) */}
             <div className="lg:col-span-7 bg-slate-900 p-6 sm:p-8 border border-slate-800">
-              
+
               <AnimatePresence mode="wait">
                 {formSubmitted ? (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -698,7 +681,7 @@ export default function App() {
                         Terima kasih {formData.name}, saran diskusi mengenai <strong className="text-purple-400">"{formData.subject || 'Kolaborasi'}"</strong> telah disimpan. Konfirmasi balasan akan dilayangkan via {formData.email}.
                       </p>
                     </div>
-                    <button 
+                    <button
                       onClick={() => setFormSubmitted(false)}
                       className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase tracking-widest transition-colors"
                     >
@@ -715,7 +698,7 @@ export default function App() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">Nama Anda</label>
-                        <input 
+                        <input
                           type="text"
                           required
                           value={formData.name}
@@ -726,7 +709,7 @@ export default function App() {
                       </div>
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">Email Aktif</label>
-                        <input 
+                        <input
                           type="email"
                           required
                           value={formData.email}
@@ -739,7 +722,7 @@ export default function App() {
 
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">Subjek / Perihal</label>
-                      <input 
+                      <input
                         type="text"
                         required
                         value={formData.subject}
@@ -761,7 +744,7 @@ export default function App() {
                       />
                     </div>
 
-                    <button 
+                    <button
                       type="submit"
                       disabled={isLoading}
                       className="w-full py-3 bg-purple-600 hover:bg-purple-700 disabled:bg-purple-800 text-white font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center space-x-2"
@@ -794,7 +777,7 @@ export default function App() {
             <p>© 2026 {personalData.name}. All Rights Reserved. Portofolio Akademik Semester 6 Teknik Informatika.</p>
             <div className="flex gap-4 items-center mt-2 md:mt-0">
               <span className="w-1.5 h-1.5 rounded-none bg-emerald-500 animate-pulse"></span>
-              <span className="uppercase tracking-widest font-bold">BANDUNG, INDONESIA</span>
+              <span className="uppercase tracking-widest font-bold">LAMPUNG, INDONESIA</span>
             </div>
           </div>
 
@@ -805,7 +788,7 @@ export default function App() {
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -813,15 +796,15 @@ export default function App() {
               className="fixed inset-0 bg-slate-950/75 backdrop-blur-sm"
               id="modal-backdrop"
             />
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               className="relative bg-white w-full max-w-2xl rounded-none shadow-2xl overflow-hidden border-2 border-slate-950 z-10 max-h-[90vh] flex flex-col"
               id="project-dialog-card"
             >
-              
+
               {/* Modal header */}
               <div className="p-6 bg-slate-50 border-b border-slate-200 flex items-start justify-between">
                 <div>
@@ -831,7 +814,7 @@ export default function App() {
                   <h3 className="text-xl font-bold uppercase tracking-tight text-slate-950">{selectedProject.title}</h3>
                   <p className="text-[11px] text-slate-500 font-mono font-bold mt-1">PROYEK PERKULIAHAN • SEMESTER {selectedProject.semester}</p>
                 </div>
-                <button 
+                <button
                   onClick={() => setSelectedProject(null)}
                   className="p-1.5 bg-white border border-slate-200 text-slate-400 hover:text-slate-800 transition-all rounded-none"
                   aria-label="Tutup Detail"
@@ -842,7 +825,7 @@ export default function App() {
 
               {/* Scrollable details */}
               <div className="p-6 overflow-y-auto space-y-6 text-sm flex-1">
-                
+
                 {/* Long description */}
                 <div className="space-y-2">
                   <h4 className="text-[10px] font-mono font-extrabold text-purple-700 uppercase tracking-widest flex items-center space-x-1.5">
@@ -908,9 +891,9 @@ export default function App() {
               <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between font-mono text-[10px]">
                 <span className="text-slate-400">UNIV. PEMBANGUNAN NASIONAL</span>
                 <div className="flex items-center space-x-3">
-                  <a 
-                    href={selectedProject.githubUrl || 'https://github.com'} 
-                    target="_blank"  
+                  <a
+                    href={selectedProject.githubUrl || 'https://github.com'}
+                    target="_blank"
                     rel="noreferrer"
                     className="p-2 border border-slate-200 bg-white text-slate-600 hover:border-purple-600 hover:text-purple-700 transition-colors flex items-center space-x-1.5 font-bold uppercase tracking-wider text-[10px]"
                   >
@@ -918,9 +901,9 @@ export default function App() {
                     <span>Pustaka Kode</span>
                   </a>
                   {selectedProject.liveUrl && (
-                    <a 
-                      href={selectedProject.liveUrl} 
-                      target="_blank" 
+                    <a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
                       rel="noreferrer"
                       className="p-2 bg-slate-950 text-white hover:bg-purple-600 transition-all flex items-center space-x-1.5 font-bold uppercase tracking-wider text-[10px]"
                     >

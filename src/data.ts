@@ -5,7 +5,7 @@ export const personalData = {
   title: "Mahasiswa Teknik Informatika",
   semester: 6,
   university: "Universitas Pembangunan Nasional",
-  city: "Bandung, Indonesia",
+  city: "Lampung, Indonesia",
   bio: "Mahasiswa Semester 6 Teknik Informatika yang berfokus pada Pengambangan Web Fullstack & Rekayasa Sistem. Memiliki pengalaman sebagai Asisten Praktikum Basis Data serta kepemimpinan aktif di Himpunan Mahasiswa. Selalu antusias memecahkan masalah kompleks lewat baris kode yang bersih dan terstruktur.",
   email: "nadiantshva31@gmail.com",
   github: "https://github.com",
